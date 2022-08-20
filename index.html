@@ -298,7 +298,6 @@ Option 2: Voter ID Number and County are required.</p>
 </body>
 <script>
 	function search(fname,lname,voterid,county) {
-		console.log(fname,lname,voterid,county)
 		match = false
 		const http = new XMLHttpRequest()
 		http.open("GET", "./counties/"+county+".txt")
@@ -306,9 +305,7 @@ Option 2: Voter ID Number and County are required.</p>
 		http.onload = function() {
     	if (voterid != '') {
     		const re = new RegExp(county+"\t.*"+voterid+".*")
-    		console.log(re)
     		result = re.exec(http.responseText)
-    		console.log(result)
     		if (result !== null) {
     			match = true
     			document.getElementById('result').innerHTML = result[0]
@@ -316,9 +313,7 @@ Option 2: Voter ID Number and County are required.</p>
     	}
     	else if (voterid == '') {
     		const re = new RegExp(county+"\t"+lname+'.*, '+fname+".*")
-    		console.log(re)
     		result = re.exec(http.responseText)
-    		console.log(result)
     		if (result !== null) {
     			match = true
     			document.getElementById('result').innerHTML = result[0]
