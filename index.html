@@ -301,7 +301,7 @@ Option 2: Voter ID Number and County are required.</p>
 		console.log(fname,lname,voterid,county)
 		match = false
 		const http = new XMLHttpRequest()
-		http.open("GET", "/counties/"+county+".txt")
+		http.open("GET", "counties/"+county+".txt")
 		http.send()
 		http.onload = function() {
     	if (voterid != '') {
