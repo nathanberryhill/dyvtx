@@ -1,0 +1,344 @@
+<!doctype html>
+<html>
+<head>
+<title>Texas Vote Checker Tool</title>
+<link rel="icon" type="image/png" href="./img/favicon.png">
+<style>
+	body {
+		margin: auto;
+		margin-top: 10%;
+		width: 600px;
+	}
+	a:visited {
+		color: blue;
+	}
+</style>
+</head>
+<body>
+<h1>Texas Vote Checker Tool</h1>
+
+<p>Did you vote in Texas in 2020, but want to make sure your vote was received and counted? Look no further! This tool can help you do just that.</p>
+
+<p>You can search by your name and county, or if you know your Voter ID number, you can search with that too!</p>
+
+<p id="optiontext">Option 1: First Name, Last Name, and County are required.<br>
+Option 2: Voter ID Number and County are required.</p>
+<form id="form" action="javascript:">
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname"><br><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname"><br><br>
+  <label for="voterid">Voter ID Number:</label><br>
+  <input type="number" id="voterid" name="voterid"><br><br>
+  <label for="county">County:</label><br>
+  <select id="county" name="county">
+    <option value=""></option>
+    <option value="ANDERSON">ANDERSON</option>
+    <option value="ANDREWS">ANDREWS</option>
+    <option value="ANGELINA">ANGELINA</option>
+    <option value="ARANSAS">ARANSAS</option>
+    <option value="ARCHER">ARCHER</option>
+    <option value="ARMSTRONG">ARMSTRONG</option>
+    <option value="ATASCOSA">ATASCOSA</option>
+    <option value="AUSTIN">AUSTIN</option>
+    <option value="BAILEY">BAILEY</option>
+    <option value="BANDERA">BANDERA</option>
+    <option value="BASTROP">BASTROP</option>
+    <option value="BAYLOR">BAYLOR</option>
+    <option value="BEE">BEE</option>
+    <option value="BELL">BELL</option>
+    <option value="BEXAR">BEXAR</option>
+    <option value="BLANCO">BLANCO</option>
+    <option value="BORDEN">BORDEN</option>
+    <option value="BOSQUE">BOSQUE</option>
+    <option value="BOWIE">BOWIE</option>
+    <option value="BRAZORIA">BRAZORIA</option>
+    <option value="BRAZOS">BRAZOS</option>
+    <option value="BREWSTER">BREWSTER</option>
+    <option value="BRISCOE">BRISCOE</option>
+    <option value="BROOKS">BROOKS</option>
+    <option value="BROWN">BROWN</option>
+    <option value="BURLESON">BURLESON</option>
+    <option value="BURNET">BURNET</option>
+    <option value="CALDWELL">CALDWELL</option>
+    <option value="CALHOUN">CALHOUN</option>
+    <option value="CALLAHAN">CALLAHAN</option>
+    <option value="CAMERON">CAMERON</option>
+    <option value="CAMP">CAMP</option>
+    <option value="CARSON">CARSON</option>
+    <option value="CASS">CASS</option>
+    <option value="CASTRO">CASTRO</option>
+    <option value="CHAMBERS">CHAMBERS</option>
+    <option value="CHEROKEE">CHEROKEE</option>
+    <option value="CHILDRESS">CHILDRESS</option>
+    <option value="CLAY">CLAY</option>
+    <option value="COCHRAN">COCHRAN</option>
+    <option value="COKE">COKE</option>
+    <option value="COLEMAN">COLEMAN</option>
+    <option value="COLLIN">COLLIN</option>
+    <option value="COLLINGSWORTH">COLLINGSWORTH</option>
+    <option value="COLORADO">COLORADO</option>
+    <option value="COMAL">COMAL</option>
+    <option value="COMANCHE">COMANCHE</option>
+    <option value="CONCHO">CONCHO</option>
+    <option value="COOKE">COOKE</option>
+    <option value="CORYELL">CORYELL</option>
+    <option value="COTTLE">COTTLE</option>
+    <option value="CRANE">CRANE</option>
+    <option value="CROCKETT">CROCKETT</option>
+    <option value="CROSBY">CROSBY</option>
+    <option value="CULBERSON">CULBERSON</option>
+    <option value="DALLAM">DALLAM</option>
+    <option value="DALLAS">DALLAS</option>
+    <option value="DAWSON">DAWSON</option>
+    <option value="DE WITT">DE WITT</option>
+    <option value="DEAF SMITH">DEAF SMITH</option>
+    <option value="DELTA">DELTA</option>
+    <option value="DENTON">DENTON</option>
+    <option value="DICKENS">DICKENS</option>
+    <option value="DIMMIT">DIMMIT</option>
+    <option value="DONLEY">DONLEY</option>
+    <option value="DUVAL">DUVAL</option>
+    <option value="EASTLAND">EASTLAND</option>
+    <option value="ECTOR">ECTOR</option>
+    <option value="EDWARDS">EDWARDS</option>
+    <option value="EL PASO">EL PASO</option>
+    <option value="ELLIS">ELLIS</option>
+    <option value="ERATH">ERATH</option>
+    <option value="FALLS">FALLS</option>
+    <option value="FANNIN">FANNIN</option>
+    <option value="FAYETTE">FAYETTE</option>
+    <option value="FISHER">FISHER</option>
+    <option value="FLOYD">FLOYD</option>
+    <option value="FOARD">FOARD</option>
+    <option value="FORT BEND">FORT BEND</option>
+    <option value="FRANKLIN">FRANKLIN</option>
+    <option value="FREESTONE">FREESTONE</option>
+    <option value="FRIO">FRIO</option>
+    <option value="GAINES">GAINES</option>
+    <option value="GALVESTON">GALVESTON</option>
+    <option value="GARZA">GARZA</option>
+    <option value="GILLESPIE">GILLESPIE</option>
+    <option value="GLASSCOCK">GLASSCOCK</option>
+    <option value="GOLIAD">GOLIAD</option>
+    <option value="GONZALES">GONZALES</option>
+    <option value="GRAY">GRAY</option>
+    <option value="GRAYSON">GRAYSON</option>
+    <option value="GREGG">GREGG</option>
+    <option value="GRIMES">GRIMES</option>
+    <option value="GUADALUPE">GUADALUPE</option>
+    <option value="HALE">HALE</option>
+    <option value="HALL">HALL</option>
+    <option value="HAMILTON">HAMILTON</option>
+    <option value="HANSFORD">HANSFORD</option>
+    <option value="HARDEMAN">HARDEMAN</option>
+    <option value="HARDIN">HARDIN</option>
+    <option value="HARRIS">HARRIS</option>
+    <option value="HARRISON">HARRISON</option>
+    <option value="HARTLEY">HARTLEY</option>
+    <option value="HASKELL">HASKELL</option>
+    <option value="HAYS">HAYS</option>
+    <option value="HEMPHILL">HEMPHILL</option>
+    <option value="HENDERSON">HENDERSON</option>
+    <option value="HIDALGO">HIDALGO</option>
+    <option value="HILL">HILL</option>
+    <option value="HOCKLEY">HOCKLEY</option>
+    <option value="HOOD">HOOD</option>
+    <option value="HOPKINS">HOPKINS</option>
+    <option value="HOUSTON">HOUSTON</option>
+    <option value="HOWARD">HOWARD</option>
+    <option value="HUDSPETH">HUDSPETH</option>
+    <option value="HUNT">HUNT</option>
+    <option value="HUTCHINSON">HUTCHINSON</option>
+    <option value="IRION">IRION</option>
+    <option value="JACK">JACK</option>
+    <option value="JACKSON">JACKSON</option>
+    <option value="JASPER">JASPER</option>
+    <option value="JEFF DAVIS">JEFF DAVIS</option>
+    <option value="JEFFERSON">JEFFERSON</option>
+    <option value="JIM HOGG">JIM HOGG</option>
+    <option value="JIM WELLS">JIM WELLS</option>
+    <option value="JOHNSON">JOHNSON</option>
+    <option value="JONES">JONES</option>
+    <option value="KARNES">KARNES</option>
+    <option value="KAUFMAN">KAUFMAN</option>
+    <option value="KENDALL">KENDALL</option>
+    <option value="KENEDY">KENEDY</option>
+    <option value="KENT">KENT</option>
+    <option value="KERR">KERR</option>
+    <option value="KIMBLE">KIMBLE</option>
+    <option value="KING">KING</option>
+    <option value="KINNEY">KINNEY</option>
+    <option value="KLEBERG">KLEBERG</option>
+    <option value="KNOX">KNOX</option>
+    <option value="LA SALLE">LA SALLE</option>
+    <option value="LAMAR">LAMAR</option>
+    <option value="LAMB">LAMB</option>
+    <option value="LAMPASAS">LAMPASAS</option>
+    <option value="LAVACA">LAVACA</option>
+    <option value="LEE">LEE</option>
+    <option value="LEON">LEON</option>
+    <option value="LIBERTY">LIBERTY</option>
+    <option value="LIMESTONE">LIMESTONE</option>
+    <option value="LIPSCOMB">LIPSCOMB</option>
+    <option value="LIVE OAK">LIVE OAK</option>
+    <option value="LLANO">LLANO</option>
+    <option value="LOVING">LOVING</option>
+    <option value="LUBBOCK">LUBBOCK</option>
+    <option value="LYNN">LYNN</option>
+    <option value="MADISON">MADISON</option>
+    <option value="MARION">MARION</option>
+    <option value="MARTIN">MARTIN</option>
+    <option value="MASON">MASON</option>
+    <option value="MATAGORDA">MATAGORDA</option>
+    <option value="MAVERICK">MAVERICK</option>
+    <option value="MCCULLOCH">MCCULLOCH</option>
+    <option value="MCLENNAN">MCLENNAN</option>
+    <option value="MCMULLEN">MCMULLEN</option>
+    <option value="MEDINA">MEDINA</option>
+    <option value="MENARD">MENARD</option>
+    <option value="MIDLAND">MIDLAND</option>
+    <option value="MILAM">MILAM</option>
+    <option value="MILLS">MILLS</option>
+    <option value="MITCHELL">MITCHELL</option>
+    <option value="MONTAGUE">MONTAGUE</option>
+    <option value="MONTGOMERY">MONTGOMERY</option>
+    <option value="MOORE">MOORE</option>
+    <option value="MORRIS">MORRIS</option>
+    <option value="MOTLEY">MOTLEY</option>
+    <option value="NACOGDOCHES">NACOGDOCHES</option>
+    <option value="NAVARRO">NAVARRO</option>
+    <option value="NEWTON">NEWTON</option>
+    <option value="NOLAN">NOLAN</option>
+    <option value="NUECES">NUECES</option>
+    <option value="OCHILTREE">OCHILTREE</option>
+    <option value="OLDHAM">OLDHAM</option>
+    <option value="ORANGE">ORANGE</option>
+    <option value="PALO PINTO">PALO PINTO</option>
+    <option value="PANOLA">PANOLA</option>
+    <option value="PARKER">PARKER</option>
+    <option value="PARMER">PARMER</option>
+    <option value="PECOS">PECOS</option>
+    <option value="POLK">POLK</option>
+    <option value="POTTER">POTTER</option>
+    <option value="PRESIDIO">PRESIDIO</option>
+    <option value="RAINS">RAINS</option>
+    <option value="RANDALL">RANDALL</option>
+    <option value="REAGAN">REAGAN</option>
+    <option value="REAL">REAL</option>
+    <option value="RED RIVER">RED RIVER</option>
+    <option value="REEVES">REEVES</option>
+    <option value="REFUGIO">REFUGIO</option>
+    <option value="ROBERTS">ROBERTS</option>
+    <option value="ROBERTSON">ROBERTSON</option>
+    <option value="ROCKWALL">ROCKWALL</option>
+    <option value="RUNNELS">RUNNELS</option>
+    <option value="RUSK">RUSK</option>
+    <option value="SABINE">SABINE</option>
+    <option value="SAN AUGUSTINE">SAN AUGUSTINE</option>
+    <option value="SAN JACINTO">SAN JACINTO</option>
+    <option value="SAN PATRICIO">SAN PATRICIO</option>
+    <option value="SAN SABA">SAN SABA</option>
+    <option value="SCHLEICHER">SCHLEICHER</option>
+    <option value="SCURRY">SCURRY</option>
+    <option value="SHACKELFORD">SHACKELFORD</option>
+    <option value="SHELBY">SHELBY</option>
+    <option value="SHERMAN">SHERMAN</option>
+    <option value="SMITH">SMITH</option>
+    <option value="SOMERVELL">SOMERVELL</option>
+    <option value="STARR">STARR</option>
+    <option value="STEPHENS">STEPHENS</option>
+    <option value="STERLING">STERLING</option>
+    <option value="STONEWALL">STONEWALL</option>
+    <option value="SUTTON">SUTTON</option>
+    <option value="SWISHER">SWISHER</option>
+    <option value="TARRANT">TARRANT</option>
+    <option value="TAYLOR">TAYLOR</option>
+    <option value="TERRELL">TERRELL</option>
+    <option value="TERRY">TERRY</option>
+    <option value="THROCKMORTON">THROCKMORTON</option>
+    <option value="TITUS">TITUS</option>
+    <option value="TOM GREEN">TOM GREEN</option>
+    <option value="TRAVIS">TRAVIS</option>
+    <option value="TRINITY">TRINITY</option>
+    <option value="TYLER">TYLER</option>
+    <option value="UPSHUR">UPSHUR</option>
+    <option value="UPTON">UPTON</option>
+    <option value="UVALDE">UVALDE</option>
+    <option value="VAL VERDE">VAL VERDE</option>
+    <option value="VAN ZANDT">VAN ZANDT</option>
+    <option value="VICTORIA">VICTORIA</option>
+    <option value="WALKER">WALKER</option>
+    <option value="WALLER">WALLER</option>
+    <option value="WARD">WARD</option>
+    <option value="WASHINGTON">WASHINGTON</option>
+    <option value="WEBB">WEBB</option>
+    <option value="WHARTON">WHARTON</option>
+    <option value="WHEELER">WHEELER</option>
+    <option value="WICHITA">WICHITA</option>
+    <option value="WILBARGER">WILBARGER</option>
+    <option value="WILLACY">WILLACY</option>
+    <option value="WILLIAMSON">WILLIAMSON</option>
+    <option value="WILSON">WILSON</option>
+    <option value="WINKLER">WINKLER</option>
+    <option value="WISE">WISE</option>
+    <option value="WOOD">WOOD</option>
+    <option value="YOAKUM">YOAKUM</option>
+    <option value="YOUNG">YOUNG</option>
+    <option value="ZAPATA">ZAPATA</option>
+    <option value="ZAVALA">ZAVALA</option>
+</select><br><br>
+<input type="submit" value="Submit">&nbsp;&nbsp;<input type="reset" value="Clear">
+</form><br><br>
+<span id="falseresult" style="visibility:hidden;color:red;font-weight:bold;">No Voter Match Found.</span>
+<span id="trueresult" style="visibility:hidden;color:green;font-weight:bold;">Voter Match Found!</span><br>
+<span id="result"></span>
+</body>
+<script>
+	function search(fname,lname,voterid,county) {
+		console.log(fname,lname,voterid,county)
+		match = false
+		const http = new XMLHttpRequest()
+		http.open("GET", "/counties/"+county+".txt")
+		http.send()
+		http.onload = function() {
+    	if (voterid != '') {
+    		const re = new RegExp(county+"\t.*"+voterid+".*")
+    		console.log(re)
+    		result = re.exec(http.responseText)
+    		console.log(result)
+    		if (result !== null) {
+    			match = true
+    			document.getElementById('result').innerHTML = result[0]
+    		}
+    	}
+    	else if (voterid == '') {
+    		const re = new RegExp(county+"\t"+lname+'.*, '+fname+".*")
+    		console.log(re)
+    		result = re.exec(http.responseText)
+    		console.log(result)
+    		if (result !== null) {
+    			match = true
+    			document.getElementById('result').innerHTML = result[0]
+    		}
+    	}
+		document.getElementById(match+'result').style.visibility = "visible"
+		}
+	}
+
+	function validEntry(event) {
+		if (county.value=='' || ((fname.value=='' || lname.value=='') && voterid.value=='')) {
+		document.getElementById("optiontext").style="color:red"
+		event.preventDefault()
+		return
+	    }
+	    document.getElementById('result').innerHTML = ''
+	    document.getElementById("trueresult").style.visibility = "hidden"
+	    document.getElementById("falseresult").style.visibility = "hidden"
+	    document.getElementById("optiontext").style="color:black"
+	    search(fname.value.toUpperCase(),lname.value.toUpperCase(),voterid.value.toUpperCase(),county.value.toUpperCase())
+	}
+	const form = document.getElementById("form");
+	form.addEventListener('submit', validEntry);
+</script>
+</html>
