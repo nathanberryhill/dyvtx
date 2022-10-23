@@ -6,23 +6,55 @@
 <style>
 	body {
 		margin: auto;
-		margin-top: 10%;
-		width: 600px;
+		margin-top: 8%;
+		width: 50%;
 	}
 	a:visited {
 		color: blue;
 	}
+  form, .result {
+    text-align: center;
+    align-content: center;
+
+  }
+  input[type=submit] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  input[type=reset] {
+    background-color: #ff0000;
+    border: none;
+    color: white;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  input[type=text], input[type=number], select {
+    width: 30%;
+  }
 </style>
 </head>
 <body>
-<h1>Texas 2020 Vote Checker Tool</h1>
+<h1>Texas Vote Checker Tool</h1>
 
-<p>Did you vote in Texas in 2020, but want to make sure your vote was received and counted? Look no further! This tool can help you do just that.</p>
+<p>Did you vote in Texas in 2020 or 2022, but want to make sure your vote was received and counted? Look no further! This tool can help you do just that.</p>
 
 <p>You can search by your name and county, or if you know your Voter ID number, you can search with that too!</p>
 
-<p id="optiontext">Option 1: First Name, Last Name, and County are required.<br>
-Option 2: Voter ID Number and County are required.</p>
+<p id="optiontext">Option 1: First Name, Last Name, County, and Year are required.<br>
+Option 2: Voter ID Number, County, and Year are required.</p>
 <form id="form" action="javascript:">
   <label for="fname">First name:</label><br>
   <input type="text" id="fname" name="fname"><br><br>
@@ -287,20 +319,25 @@ Option 2: Voter ID Number and County are required.</p>
     <option value="YOUNG">YOUNG</option>
     <option value="ZAPATA">ZAPATA</option>
     <option value="ZAVALA">ZAVALA</option>
+</select><br>
+<label for="county">County:</label><br>
+<select id="year" name="year">
+    <option value="2022">2022</option>
+    <option value="2020">2020</option>
 </select><br><br>
-<input type="submit" value="Submit">&nbsp;&nbsp;<input type="reset" value="Clear">
+<input type="submit" value="Submit">&nbsp;<input type="reset" value="Clear">
 </form><br><br>
-<span id="falseresult" style="visibility:hidden;color:red;font-weight:bold;">No Voter Match Found.</span>
-<span id="trueresult" style="visibility:hidden;color:green;font-weight:bold;">Voter Match Found!</span><br>
-<span id="result"></span>
+<div class="result" id="falseresult" style="visibility:hidden;color:red;font-weight:bold;">No Voter Match Found.</div>
+<div class="result" id="trueresult" style="visibility:hidden;color:green;font-weight:bold;">Voter Match Found!</div>
+<div class="result" id="result"></div>
 <br><br>
 <a href="/">Go Home</a>
 </body>
 <script>
-	function search(fname,lname,voterid,county) {
+	function search(fname,lname,voterid,county,year) {
 		match = false
 		const http = new XMLHttpRequest()
-		http.open("GET", "./counties/"+county+".txt")
+		http.open("GET", "./counties/"+year+"/"+county+".txt")
 		http.send()
 		http.onload = function() {
     	if (voterid != '') {
@@ -327,16 +364,16 @@ Option 2: Voter ID Number and County are required.</p>
     document.getElementById('result').innerHTML = ''
     document.getElementById("trueresult").style.visibility = "hidden"
     document.getElementById("falseresult").style.visibility = "hidden"
-		if (county.value=='' || ((fname.value=='' || lname.value=='') && voterid.value=='')) {
-		document.getElementById("optiontext").style="color:red"
-		event.preventDefault()
-		return
-	    }
-	    document.getElementById('result').innerHTML = ''
-	    document.getElementById("trueresult").style.visibility = "hidden"
-	    document.getElementById("falseresult").style.visibility = "hidden"
-	    document.getElementById("optiontext").style="color:black"
-	    search(fname.value.toUpperCase(),lname.value.toUpperCase(),voterid.value.toUpperCase(),county.value.toUpperCase())
+    if (county.value=='' || ((fname.value=='' || lname.value=='') && voterid.value=='') || year.value='') {
+      document.getElementById("optiontext").style="color:red"
+      event.preventDefault()
+      return
+    }
+    document.getElementById('result').innerHTML = ''
+    document.getElementById("trueresult").style.visibility = "hidden"
+    document.getElementById("falseresult").style.visibility = "hidden"
+    document.getElementById("optiontext").style="color:black"
+    search(fname.value.toUpperCase(),lname.value.toUpperCase(),voterid.value.toUpperCase(),county.value.toUpperCase(),year.value)
 	}
 	const form = document.getElementById("form");
 	form.addEventListener('submit', validEntry);
