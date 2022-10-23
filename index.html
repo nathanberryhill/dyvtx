@@ -320,7 +320,7 @@ Option 2: Voter ID Number, County, and Year are required.</p>
     <option value="ZAPATA">ZAPATA</option>
     <option value="ZAVALA">ZAVALA</option>
 </select><br>
-<label for="county">County:</label><br>
+<label for="county">Year:</label><br>
 <select id="year" name="year">
     <option value="2022">2022</option>
     <option value="2020">2020</option>
@@ -364,7 +364,7 @@ Option 2: Voter ID Number, County, and Year are required.</p>
     document.getElementById('result').innerHTML = ''
     document.getElementById("trueresult").style.visibility = "hidden"
     document.getElementById("falseresult").style.visibility = "hidden"
-    if (county.value=='' || ((fname.value=='' || lname.value=='') && voterid.value=='') || year.value='') {
+    if (county.value=='' || ((fname.value=='' || lname.value=='') && voterid.value=='') || year.value==''){
       document.getElementById("optiontext").style="color:red"
       event.preventDefault()
       return
