@@ -341,7 +341,7 @@ Option 2: Voter ID Number, County, and Year are required.</p>
 		http.send()
 		http.onload = function() {
     	if (voterid != '') {
-    		const re = new RegExp(county+"\t.*"+voterid+".*")
+    		const re = new RegExp(".*\t"+voterid+"\t.*")
     		result = re.exec(http.responseText)
     		if (result !== null) {
     			match = true
@@ -349,7 +349,7 @@ Option 2: Voter ID Number, County, and Year are required.</p>
     		}
     	}
     	else if (voterid == '') {
-    		const re = new RegExp(county+"\t"+lname+'.*, '+fname+".*")
+    		const re = new RegExp(lname+'.*, '+fname+"\t.*")
     		result = re.exec(http.responseText)
     		if (result !== null) {
     			match = true
